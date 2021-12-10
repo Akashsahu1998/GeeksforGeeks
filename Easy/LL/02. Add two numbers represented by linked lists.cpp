@@ -3,7 +3,7 @@
 // Que Link :- https://practice.geeksforgeeks.org/problems/add-two-numbers-represented-by-linked-lists/1#
 
 // Implementation
-// Time Complexity = O(N), Space Complexity = O(1)
+// Time Complexity = O(max(l1, l2)), Space Complexity = O(1)
 
 class Solution
 {
