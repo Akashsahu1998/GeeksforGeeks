@@ -3,6 +3,7 @@
 // Que Link :- https://practice.geeksforgeeks.org/problems/stock-span-problem-1587115621/1#
 
 // Implementation
+// Using Stack
 // Time Complexity = O(N), Space Complexity = O(N)
 class Solution
 {
