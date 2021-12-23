@@ -22,7 +22,7 @@ class Solution
         Node* res = new Node(0);
         Node* resCur = res;
         
-        // Iteratign & Checking if node is already present into map,
+        // Iteratign & Checking if node is already present into set,
         // it means that is the intersection point.
         cur = head1;
         while(cur){
