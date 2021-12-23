@@ -28,3 +28,26 @@ int intersectPoint(Node* head1, Node* head2){
     // if not present
     return -1;
 }
+
+
+// Efficient Approach
+// Idea is to iterate over a list two times
+// Time Complexity = O(N), Space Complexity = O(1)
+int intersectPoint(Node* head1, Node* head2){
+    Node* curA = head1;
+    Node* curB = head2;
+    
+    // For example
+    // headA = [1, 2, 3, 4]
+    // headB = [8, 4]
+    // Just assume it as headA = headA + headB, and headB = headB + headA
+    // headA = [1, 2, 3, 4, 8, 4]
+    // headB = [8, 4, 1, 2, 3, 4]
+    // we are iterating in this way
+    
+    while(curA != curB){
+        curA = curA ? curA->next : head2;
+        curB = curB ? curB->next : head1;
+    }
+    return (curA) ? curA->data : -1;
+}
