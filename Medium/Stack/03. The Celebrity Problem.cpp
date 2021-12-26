@@ -4,6 +4,7 @@
 
 // Implementation
 
+// 1st Approach
 // Naive Approach
 // Using Vector
 // Time Complexity = O(N^2), Space Complexity = O(N)
@@ -32,6 +33,7 @@ class Solution
 };
 
 
+// 2nd Approach
 // reference : https://www.youtube.com/watch?v=CiiXBvrX-5A
 // Efficient Approach
 // Using Stack
@@ -69,5 +71,31 @@ class Solution
             }
         }
         return lastValue;
+    }
+};
+
+
+// 3rd Approach
+// reference : https://www.youtube.com/watch?v=Z5AEc12ieOs
+// Most Efficient Approach
+// Time Complexity = O(N), Space Complexity = O(1)
+class Solution 
+{
+    public:
+    //Function to find if there is a celebrity in the party or not.
+    int celebrity(vector<vector<int> >& matrix, int n) {
+        int celebrity = 0;
+        for(int itr = 1; itr < n; itr++){
+            if(matrix[celebrity][itr]){
+                celebrity = itr;
+            }
+        }
+        
+        for(int itr = 0; itr < n; itr++){
+            if(itr != celebrity && (matrix[celebrity][itr] == 1 || matrix[itr][celebrity] == 0)){
+                return -1;
+            }
+        }
+        return celebrity;
     }
 };
