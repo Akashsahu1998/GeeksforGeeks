@@ -1,6 +1,6 @@
 
 // Question) 02.  Special Stack
-// Link = https://practice.geeksforgeeks.org/problems/special-stack/1
+// Link = https://practice.geeksforgeeks.org/problems/special-stack/1 
 
 // Implementation
 
