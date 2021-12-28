@@ -34,3 +34,69 @@ class Solution
         return res;
     }
 };
+
+
+// Efficient Approach
+// Traversing 5 times
+// Time Complexity : O(N)
+// Space Complexity : O(N) bcz we used stack
+class Solution
+{
+    public:
+    //Function to find maximum of minimums of every window size.
+    vector <int> maxOfMin(int arr[], int n){
+        stack<int> st;
+        
+        // creating the left arr which contains a previous smaller element which
+        // is the nearest smallest element on the left side of arr[i]. 
+        vector<int> left(n);
+        for(int itr = 0; itr < n; itr++){
+            while(!st.empty() && arr[st.top()] >= arr[itr]) st.pop();
+            
+            if(st.empty()) left[itr] = -1;
+            else left[itr] = st.top();
+            
+            st.push(itr);
+        }
+        
+        // clearing the stack
+        while(!st.empty()) st.pop();
+        
+        // creating the right arr which contains a next smaller element which
+        // is the nearest smallest element on the right side of arr[i]. 
+        vector<int> right(n);
+        for(int itr = n-1; itr >= 0; itr--){
+            while(!st.empty() && arr[st.top()] >= arr[itr]) st.pop();
+            
+            if(st.empty()) right[itr] = n;
+            else right[itr] = st.top();
+            
+            st.push(itr);
+        }
+        
+        // Once we have indexes of next and previous smaller, we know that
+        // arr[i] is a minimum of a window of length (right[i] - left[i] - 1)
+        
+        // create ans of n+1 size
+        vector<int> ans(n+1, 0);
+        
+        for(int itr = 0; itr < n; itr++){
+            int len = right[itr] - left[itr] - 1;
+            ans[len] = max(ans[len], arr[itr]);
+        }
+        
+        // Some entries in ans[] are 0 and yet to be filled
+        // bcz there can we an element which is equal to another smaller element
+        for(int itr = n-1; itr > 0; itr--){
+            ans[itr] = max(ans[itr], ans[itr+1]);
+        }
+        
+        // copying all elements from and to res
+        vector<int> res;
+        for(int itr = 1; itr < n+1; itr++){
+            res.push_back(ans[itr]);
+        }
+        
+        return res;
+    }
+};
