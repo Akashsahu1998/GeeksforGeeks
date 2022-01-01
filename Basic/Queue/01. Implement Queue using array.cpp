@@ -1,6 +1,6 @@
 
 // Que) 01. Implement Queue using array
-// Que Link :- https://www.geeksforgeeks.org/array-implementation-of-queue-simple/
+// Que Link :- https://practice.geeksforgeeks.org/problems/implement-queue-using-array/1
 
 // Implementation
 
