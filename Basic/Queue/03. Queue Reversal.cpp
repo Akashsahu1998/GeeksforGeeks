@@ -19,3 +19,20 @@ queue<int> rev(queue<int> q){
     return q;
 }
 
+
+// Time Complexity : O(N), Space Complexity : O(N)
+// Using Iterative approach
+
+queue<int> rev(queue<int> q){
+    stack<int> st;
+    while(!q.empty()){
+        st.push(q.front());
+        q.pop();
+    }
+    
+    while(!st.empty()){
+        q.push(st.top());
+        st.pop();
+    }
+    return q;
+}
