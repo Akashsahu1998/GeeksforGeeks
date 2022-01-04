@@ -4,6 +4,7 @@
 
 // Implementation
 
+// left, right strategy
 // https://www.youtube.com/watch?v=eQuJb5gBkkc
 // Time Complexity = O(N), Space Complexity = O(N)
 
