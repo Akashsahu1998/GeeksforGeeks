@@ -26,3 +26,28 @@ queue<int> modifyQueue(queue<int> q, int k) {
     
     return q;
 }
+
+
+// 1 time + k times traversal
+// using stack
+// // Time Complexity = O((N)+O(K)) = O(N), Space Complexity = O(N)
+queue<int> modifyQueue(queue<int> q, int k) {
+    stack<int> st;
+    
+    for(int itr = 0; itr < k; itr++){
+        st.push(q.front());
+        q.pop();
+    }
+    
+    while(!st.empty()){
+        q.push(st.top());
+        st.pop();
+    }
+    
+    for(int itr = 0; itr < q.size() - k; itr++){
+        q.push(q.front());
+        q.pop();
+    }
+    
+    return q;
+}
