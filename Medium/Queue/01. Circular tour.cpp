@@ -15,14 +15,12 @@ class Solution{
        int start = 0, dist = 0, total = 0, count = 0, itr = 0;
        
        while(count != n){
-           int total = total + p[itr%n].petrol;
-           int dist = p[itr%n].distance;
+           total = total + p[itr%n].petrol;
+           dist = p[itr%n].distance;
            
            if(total < dist){
                start = itr+1;
-               total = 0;
-               dist = 0;
-               count = 0;
+               total = dist = count = 0;
                if(start >= n) return -1;
            }
            else {
