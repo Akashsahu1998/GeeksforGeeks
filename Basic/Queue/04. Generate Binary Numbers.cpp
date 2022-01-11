@@ -1,5 +1,5 @@
 
-// Que 01). Generate Binary Numbers
+// Que 04). Generate Binary Numbers
 // Que Link :- https://practice.geeksforgeeks.org/problems/generate-binary-numbers-1587115620/1/
 
 // Implementation
