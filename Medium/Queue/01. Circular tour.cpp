@@ -34,3 +34,29 @@ class Solution{
        return start;
     }
 };
+
+
+
+// 2nd Approach
+// Most Efficient Approach
+// Time Complexity = O(N), Space Complexity = O(1)
+class Solution{
+  public:
+  
+    //Function to find starting point where the truck can start to get through
+    //the complete circle without exhausting its petrol in between.
+    int tour(petrolPump p[],int n){
+       int start = 0, backupTotal = 0, total = 0;
+        
+        for(int itr = 0; itr < n; itr++){
+            backupTotal = backupTotal + p[itr].petrol - p[itr].distance;
+            if(backupTotal < 0){
+                start = itr+1;
+                total += backupTotal;
+                backupTotal = 0;
+            }
+        }      
+       
+        return (total + backupTotal) >= 0 ? start : -1 ;
+    }
+};
