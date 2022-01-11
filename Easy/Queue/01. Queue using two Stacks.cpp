@@ -4,13 +4,13 @@
 
 // Implementation
 
-// Time Complexity = O(N), Space Complexity = O(N)
-
+// Time Complexity = O(1), Space Complexity = O(N)
 //Function to push an element in queue by using 2 stacks.
 void StackQueue :: push(int x){
     s1.push(x);
 }
 
+// Time Complexity = O(N), Space Complexity = O(N)
 //Function to pop an element from queue by using 2 stacks.
 int StackQueue :: pop(){
     int res = -1;
