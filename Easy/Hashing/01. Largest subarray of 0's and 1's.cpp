@@ -13,6 +13,7 @@ class Solution{
         unordered_map<int, int> mp;
         
         // replacing 0 by -1
+        // then this problem will become Largest subarray with 0 sum
         for(int itr = 0; itr < n; itr++){
             arr[itr] = (arr[itr] == 0) ? -1 : 1;
         }
