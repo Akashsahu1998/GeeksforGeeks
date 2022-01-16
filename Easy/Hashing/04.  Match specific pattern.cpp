@@ -38,3 +38,42 @@ vector<string> findMatchedWords(vector<string> dict,string pattern){
     return res;
 }
 
+
+
+// 2nd Approach
+// Using unoredered_map
+// Time Complexity = O(N*K), Space Complexity = O(N)
+
+vector<string> findMatchedWords(vector<string> dict,string pattern){
+    vector<string> res;
+    
+    // making a new hash code for all the words which are in dict
+    for(int itr = 0; itr < dict.size(); itr++){
+        
+        string str = dict[itr];
+        if(str.size() != pattern.size()) continue;
+        
+        unordered_map<char, int> mp;
+        int jtr = 0;
+        
+        // mapping the currentindex char of pattern to the currentindex char of str
+        for(; jtr < pattern.size(); jtr++)    {
+            
+            // if currentindex char of pattern present into map
+            if(mp[pattern[jtr]]){
+                
+                // if its present and its value is not equal to currentindex char of str then break, it means they are not matching pattern
+                if(mp[pattern[jtr]] != str[jtr]) break;
+            }
+            else{   // if currentindex char of pattern not present into map
+                mp[pattern[jtr]] = str[jtr];
+            }
+        }
+        
+        // if jtr == pattern.size() it means, it reaches till last index, so there are all char matching to pattern char.
+        if(jtr == pattern.size()) res.push_back(str);
+    }
+    
+    return res;
+}
+
