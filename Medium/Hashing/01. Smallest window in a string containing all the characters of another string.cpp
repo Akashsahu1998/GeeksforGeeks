@@ -5,7 +5,7 @@
 // Implementation
 
 // https://www.youtube.com/watch?v=e1HlptlipB0
-// Using unoredered_map and Sliding windows technique
+// Using unordered_map & Two Pointers/Window Sliding Technique
 // Time Complexity = O(N), Space Complexity = O(1) space O(1), bcz we will going to store till only 256 characters in the map, and thats a constant value
 class Solution{
     public:
