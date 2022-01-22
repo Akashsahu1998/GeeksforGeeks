@@ -31,3 +31,30 @@ long long int floorSqrt(long long int x) {
     }
     return res;
 }
+
+
+// 3rd Approach
+// Using Binary Search
+// Time Complexity = O(LogN)
+// Space Complexity = O(1)
+long long int floorSqrt(long long int x) {
+    if(x == 0) return 0;
+    if(x == 1) return 1;
+        
+    long long int ans = 0, low = 1, high = x/2;
+    while(low <= high){
+        
+        long long int mid = low + (high - low)/2;
+        
+        long long int sqrt = (mid*mid);
+                    
+        if(sqrt == x) return mid;
+        
+        if(sqrt > x) high = mid-1;
+        else{
+            low = mid+1;
+            ans = mid;
+        }
+    }
+    return ans;
+}
