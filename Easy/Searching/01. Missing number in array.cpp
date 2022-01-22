@@ -4,6 +4,8 @@
 
 // Implementation
 
+// 1st Approach
+// Using sum approach 
 // Time Complexity = O(N)
 // Space Complexity = O(1)
 class Solution{
@@ -22,3 +24,4 @@ class Solution{
         return totalSum - sum;
     }
 };
+
