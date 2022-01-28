@@ -4,6 +4,7 @@
 
 // Implementation
 
+// Best & Worst Both
 // Time Complexity = O(NLogN)
 // Space Complexity = O(N)
 class Solution{
