@@ -4,7 +4,7 @@
 
 // Implementation
 
-// Using Sorting
+// Using Sorting & Greedy
 // Time Complexity = O(NLogN)
 // Space Complexity = O(1)
 
