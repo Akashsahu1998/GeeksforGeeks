@@ -1,5 +1,5 @@
 
-// Que 02). Fractional Knapsack
+// Que 03). Fractional Knapsack
 // Que Link :- https://practice.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1#
 
 // Implementation
