@@ -14,7 +14,7 @@ public:
         
         if(n > m) kthElement(arr2, arr1, m, n, k);
         
-        int low = max(0, k-m), high = min(n, k);
+        int low = max(0, k-m), high = min(n, k); 
         
         while(low <= high){
             int cut1 = low + (high - low)/2;
