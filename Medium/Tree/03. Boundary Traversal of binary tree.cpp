@@ -5,46 +5,59 @@
 // Implementation
 
 // Using DFS
-// Time Complexity = O(N), Space Complexity = O(N)
+// Time Complexity = O(H) + O(H) + O(N) => O(N)
+// Space Complexity = O(N)
 class Solution {
+private:
+    bool isLeaf(Node* root){
+        return (root->left == NULL && root->right == NULL);
+    }
+
+    void addLeftBoundary(Node *root, vector<int> &res){
+        Node* cur = root->left;
+        
+        while(cur){
+            if(!isLeaf(cur)) res.push_back(cur->data);
+            cur = (cur->left) ? cur->left : cur->right;
+        }
+    }
+    
+    void addLeafBoundary(Node *root, vector<int> &res){
+        if(isLeaf(root)){
+            res.push_back(root->data);
+            return;
+        }
+        
+        if(root->left) addLeafBoundary(root->left, res);
+        if(root->right) addLeafBoundary(root->right, res);
+    }
+    
+    void addRightBoundary(Node *root, vector<int> &res){
+        Node* cur = root->right;
+        
+        vector<int> temp;
+        while(cur){
+            if(!isLeaf(cur)) temp.push_back(cur->data);
+            cur = (cur->right) ? cur->right : cur->left;
+        }
+        
+        for(int i = temp.size()-1; i >= 0; i--){
+            res.push_back(temp[i]);
+        }
+    }
+    
 public:
-    void findLeft(Node* root, vector<int> &res){
-        if(!root) return;
-        if(root->left) {
-            res.push_back(root->data);
-            findLeft(root->left, res);
-        }
-        else if(root->right) {
-            res.push_back(root->data);
-            findLeft(root->right, res);
-        }
-    }
-    
-    void findLeaf(Node* root, vector<int> &res){
-        if(!root) return;
-        findLeaf(root->left, res);
-        if(root->left == NULL && root->right == NULL) res.push_back(root->data);
-        findLeaf(root->right, res);
-    }
-    
-    void findRight(Node* root, vector<int> &res){
-        if(!root) return;
-        if(root->right) {
-            findRight(root->right, res);
-            res.push_back(root->data);
-        }
-        else if(root->left) {
-            findRight(root->left, res);
-            res.push_back(root->data);
-        }
-    }
-    
     vector <int> boundary(Node *root){
-        vector<int> res;
-        res.push_back(root->data);
-        findLeft(root->left, res);
-        findLeaf(root, res);
-        findRight(root->right, res);
+        vector <int> res;
+        
+        if(!root) return res;
+        
+        if(!isLeaf(root)) res.push_back(root->data);
+        
+        addLeftBoundary(root, res);
+        addLeafBoundary(root, res);
+        addRightBoundary(root, res);
+        
         return res;
     }
 };
