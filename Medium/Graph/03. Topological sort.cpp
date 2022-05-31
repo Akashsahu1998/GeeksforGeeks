@@ -50,7 +50,7 @@ class Solution{
 
 
 // 2nd Approach
-// Using BFS
+// Using BFS, Kahn's Algo
 // Time Complexity = O(N+E)
 // Space Complexity = (O(N) + O(N) + O(N)) => O(N)
 // Where N is the nunber of vertices in the graph and E is the number of edges
