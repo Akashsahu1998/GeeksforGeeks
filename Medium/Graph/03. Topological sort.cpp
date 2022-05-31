@@ -4,7 +4,7 @@
 
 // Implementation
 
-
+// 1st Approach
 // Using DFS
 // Time Complexity = O(N+E)
 // Space Complexity = (O(N) + O(N) + O(N)) => O(N)
@@ -41,6 +41,52 @@ class Solution{
 	    while(!st.empty()){
 	        res.push_back(st.top());
 	        st.pop();
+	    }
+	    
+	    return res;
+	}
+};
+
+
+
+// 2nd Approach
+// Using BFS
+// Time Complexity = O(N+E)
+// Space Complexity = (O(N) + O(N) + O(N)) => O(N)
+// Where N is the nunber of vertices in the graph and E is the number of edges
+// https://www.youtube.com/watch?v=rZv_jHZva34&list=PLgUwDviBIf0rGEWe64KWas0Nryn7SCRWw
+
+class Solution{
+public:
+	//Function to return list containing vertices in Topological order. 
+	vector<int> topoSort(int v, vector<int> adj[]) {
+	    vector<int> inDegree(v, 0);
+	    
+	    for(int i = 0; i < v; i++){
+	        for(auto a : adj[i]){
+	            inDegree[a]++;
+	        }
+	    }
+	    
+	    queue<int> q;
+	    for(int i = 0; i < v; i++){
+	        if(inDegree[i] == 0){
+	            q.push(i);
+	        }
+	    }
+	    
+	    vector<int> res;
+	    while(!q.empty()){
+	        int node = q.front();
+	        q.pop();
+	        res.push_back(node); 
+	        
+	        for(auto a : adj[node]){
+	            inDegree[a]--;
+	            if(inDegree[a] == 0){
+	                q.push(a);
+	            }
+	        }
 	    }
 	    
 	    return res;
