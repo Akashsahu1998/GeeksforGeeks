@@ -5,7 +5,7 @@
 // Implementation
 
 // 1st Approach
-// Using BFS
+// Using BFS, Dijkstra Algorithm
 // Time Complexity = O(N+E)
 // Space Complexity = (O(N) + O(N)) => O(N)
 // Where N is the nunber of vertices in the graph and E is the number of edges
