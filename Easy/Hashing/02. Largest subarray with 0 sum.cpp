@@ -4,31 +4,35 @@
 
 // Implementation
 
-// Using unoredered_map
+// using unoredered_map & preSum
 // Time Complexity = O(N), Space Complexity = O(N)
 class Solution{
     public:
-    int maxLen(vector<int>&arr, int n){   
-        int maxLength = 0, sum = 0;
+    int maxLen(vector<int>&arr, int n){
         unordered_map<int, int> mp;
-        
-        for(int itr = 0; itr < n; itr++){
+        int maxLength = 0, preSum = 0;
+        for(int i = 0; i < arr.size(); i++){
             
-            // calculating the sum on each index
+            // calculating the preSum on each index
             // then this problem will become Largest subarray with 0 sum
-            sum += arr[itr];
+            preSum += arr[i];
             
-            // To handle sum = 0 at last index, i.e = -5 -5 5 5
-            if(sum == 0){
-                maxLength = itr+1;
+            // if preSum is already in the map, then just calculate the maximum length of the subarray
+            if(mp.find(preSum) != mp.end()){
+                maxLength = max(maxLength, i - mp[preSum]);
             }
             
-            // if sum is already in the map, then just calculate the maximum length of the subarray
-            // if sum is not present then just add it into the map
-            if(mp.find(sum) != mp.end()){
-                maxLength = max(maxLength, itr - mp[sum]);
+            // To handle preSum = 0,
+            // i.e = {-5 -5 5 5}
+            // i.e = {1, -2, 1, 2}
+            else if(preSum == 0){
+                maxLength = max(maxLength, i+1);
             }
-            else mp[sum] = itr;
+            
+            // if preSum is not present then just add it into the map
+            else{
+                mp[preSum] = i;
+            }
         }
         
         return maxLength;
